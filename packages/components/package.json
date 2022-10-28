@@ -1,0 +1,21 @@
+{
+  "name": "vk-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "module":"es/index.js",
+  "files": [
+    "es",
+    "lib"
+  ],
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "vk-ui"
+  ],
+  "author": "Yaowen Liu",
+  "license": "MIT",
+  "dependencies": {},
+  "typings": "lib/index.d.ts"
+}
