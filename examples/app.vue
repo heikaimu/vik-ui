@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from 'vk-ui';
+import { Button } from 'vik-ui';
 </script>
 
 <style scoped>

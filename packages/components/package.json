@@ -1,9 +1,9 @@
 {
-  "name": "vk-ui",
-  "version": "1.0.0",
+  "name": "vik-ui",
+  "version": "1.0.3",
   "description": "",
-  "main": "lib/index.js",
-  "module":"es/index.js",
+  "main": "src/index.js",
+  "module": "src/index.js",
   "files": [
     "es",
     "lib"
@@ -12,10 +12,12 @@
     "build": "vite build"
   },
   "keywords": [
-    "vk-ui"
+    "vik-ui"
   ],
   "author": "Yaowen Liu",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "@vik-ui/utils": "workspace:^1.0.1"
+  },
   "typings": "lib/index.d.ts"
 }

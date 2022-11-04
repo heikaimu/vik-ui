@@ -11,6 +11,6 @@
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
-    "vk-ui": "workspace:^1.0.0"
+    "vik-ui": "workspace:^1.0.3"
   }
 }

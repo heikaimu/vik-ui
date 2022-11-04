@@ -1,6 +1,6 @@
 {
-  "name": "@vk-ui/utils",
-  "version": "1.0.0",
+  "name": "@vik-ui/utils",
+  "version": "1.0.1",
   "description": "",
   "main": "index.ts",
   "scripts": {
