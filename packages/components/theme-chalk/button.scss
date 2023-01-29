@@ -1,0 +1,148 @@
+@import "./variables";
+@import "./mixins";
+
+.vik-button {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: $color-white;
+  border: 1px solid $color-border-4;
+  color: $color-main;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: 0.1s;
+  font-weight: 500;
+  padding: 12px 20px;
+  font-size: $font-base;
+  border-radius: 4px;
+  position: relative;
+
+  &:hover {
+    transform: translate3d(0, -3px, 0);
+    box-shadow: 0 10px 20px rgba($color-black, .2);
+
+    &::after {
+      transform: scale3d(1.4, 1.6, 0);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translate3d(0, -1px, 0);
+    box-shadow: 0 5px 10px r0px($color-black, .2);
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
+
+  // 颜色
+  &--primary {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  &--success {
+    background-color: $color-success;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-success;
+    }
+  }
+
+  &--warning {
+    background-color: $color-warning;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-warning;
+    }
+  }
+
+  &--danger {
+    background-color: $color-danger;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-danger;
+    }
+  }
+
+  &--info {
+    background-color: $color-info;
+    color: $color-normal;
+
+    &::after {
+      background-color: $color-info;
+    }
+  }
+
+  // 圆角
+  &.is-round {
+    border-radius: 100px;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      border-radius: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      transition: all .4s;
+    }
+  }
+
+  // 禁用
+  &.is-disabled {
+    filter: contrast(0.5) brightness(1.4);
+    border: 1px solid #ffffff;
+    cursor: not-allowed;
+  }
+
+  // 尺寸
+  &--small {
+    padding: 9px 15px;
+    font-size: $font-ex-small;
+    border-radius: 3px;
+  }
+
+  &--medium {
+    padding: 10px 20px;
+    font-size: $font-base;
+    border-radius: 4px;
+  }
+
+  &--mini {
+    padding: 7px 15px;
+    font-size: $font-ex-small;
+    border-radius: 3px;
+  }
+
+  &.is-fill,
+  &--small.is-fill,
+  &--small.is-base,
+  &--small.is-large {
+    width: 100%;
+  }
+
+}

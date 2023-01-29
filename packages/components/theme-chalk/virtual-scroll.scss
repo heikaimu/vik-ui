@@ -1,0 +1,69 @@
+.scroll-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.scroll-container__list {
+  margin: 0;
+}
+
+.scroll-container__item {
+  list-style: none;
+}
+
+.scroll-container__bottom {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #cccccc;
+  transition: .3s ease-in-out;
+}
+
+.loading-state.cursor {
+  cursor: pointer;
+}
+
+.loading-state.cursor:hover,
+.loading-state.cursor:active {
+  color: #666666;
+}
+
+.loading-state .loading-text {
+  padding-left: 5px;
+  font-size: 16px;
+  color: currentColor;
+}
+
+.loading-state .icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.loading-state .icon.rotate {
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-state .icon svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}

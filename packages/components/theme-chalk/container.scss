@@ -1,0 +1,40 @@
+@import "./variables";
+@import "./mixins";
+.viking-container {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &--border {
+    border: 1px solid $color-border-3;
+  }
+
+  &--shadow {
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%)
+  }
+
+  &__header {
+    flex: none;
+  }
+
+  &__main {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  &__footer {
+    flex: none;
+  }
+
+}
+
+@media screen and (max-width: 749px) {
+  .viking-container {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+  }
+}

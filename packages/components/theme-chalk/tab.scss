@@ -1,0 +1,51 @@
+
+@import "./variables";
+@import "./mixins";
+
+.viking-tabs {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.viking-tab-pane {
+  margin: 0 10px;
+
+  &__title {
+    @include flex-row-center;
+    height: 34px;
+    font-size: $font-small;
+    font-weight: 600;
+    color: $color-main;
+    cursor: pointer;
+
+    &--active {
+      color: $color-primary;
+    }
+  }
+
+  &__icon {
+    width: 14px;
+    height: 14px;
+
+    &--active {
+      svg {
+        fill: $color-primary;
+      }
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+      fill: $color-main;
+    }
+  }
+
+  &__content {
+    @include absolute(auto, 0, 40px, 0);
+    border-radius: $radius-base;
+    background-color: $color-white;
+    box-shadow: 0 0 12px hsl(0, 0%, 0%, 0.1);
+    padding: 6px 12px;
+  }
+}

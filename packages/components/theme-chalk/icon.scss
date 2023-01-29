@@ -1,0 +1,41 @@
+@import "./variables";
+
+.vik-icon {
+  display: inline-block;
+  position: relative;
+  line-height: 0;
+
+  &__icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+
+  &__info {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    box-sizing: border-box;
+    min-width: 16px;
+    padding: 0 3px;
+    color: $color-white;
+    font-weight: 500;
+    font-size: $font-ex-small;
+    line-height: 1.2;
+    text-align: center;
+    border: 1px solid $color-white;
+    border-radius: 16px;
+    background-color: $color-danger;
+    transform: translate(50%, -50%);
+
+    &--dot {
+      width: 8px;
+      min-width: 0;
+      height: 8px;
+      background-color: $color-danger;
+      border-radius: 100%;
+    }
+  }
+}

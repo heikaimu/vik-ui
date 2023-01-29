@@ -1,0 +1,45 @@
+@import "./variables";
+@import "./mixins";
+
+.base-header {
+  height: 50px;
+  background-color: $color-primary;
+  position: relative;
+
+  &__heading {
+    @include absCenter;
+    margin: 0;
+    color: $color-white;
+    text-align: center;
+
+    &--main {
+      font-size: $font-medium;
+      font-weight: 700;
+      color: currentColor;
+      line-height: 1;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    &--sub {
+      font-size: $font-ex-small;
+      font-weight: 200;
+      color: currentColor;
+      line-height: 1;
+      margin: 0;
+      margin-top: 5px;
+      white-space: nowrap;
+    }
+  }
+
+  &__icon {
+    @include absolute(50%, auto, auto, 0);
+    @include flex-row-center;
+    transform: translate3d(0, -50%, 0);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    color: $color-white;
+    font-size: 20px;
+  }
+}

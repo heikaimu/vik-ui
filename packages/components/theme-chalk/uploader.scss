@@ -1,0 +1,69 @@
+@import "./variables";
+@import "./mixins";
+
+.uploader {
+  @include flex-col-center;
+  @include absolute(0, 0, 0, 0, 999999);
+  background-color: $color-white;
+
+  &__gif {
+    width: 100px;
+    height: 100px;
+  }
+
+  &__progress-box {
+    width: 200px;
+    margin-top: 10px;
+  }
+}
+
+.progress {
+  height: 20px;
+  background: $color-border-4;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+
+  &__line {
+    position: relative;
+    margin: 0 -1px;
+    min-width: 0;
+    height: 100%;
+    transition: 0.3s;
+    background-image: linear-gradient(180deg, #f0f0f0 0, #dbdbdb 70%, #ccc);
+    box-shadow: inset 0 1px hsla(0, 0%, 100%, 0.3),
+      0 1px 2px rgba(0, 0, 0, 0.2);
+    text-align: right;
+
+    &::before {
+      @include absolute;
+      content: "";
+      height: 100%;
+      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAASUlEQVQ4je3RMQ7AIBADwTnK+/9bqVMmoUBAqCJcWZa1zQYS1Z189OE9vLMEaUHLENSYOff22AGBsgOCLDPn3n6sHWtfIf5t7QLBYTNAaHlxVQAAAABJRU5ErkJggg==") 0 0 repeat-x;
+      border-radius: 10px;
+      animation: animate 0.5s linear infinite;
+    }
+
+    @keyframes animate {
+      0% {
+        background-position: 0px;
+      }
+
+      100% {
+        background-position: 12px;
+      }
+    }
+  }
+
+  &__percent {
+    display: block;
+    height: 20px;
+    padding: 0 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: $color-sub;
+    color: rgba(0, 0, 0, 0.7);
+    text-shadow: 0 1px hsla(0, 0%, 100%, 0.4);
+    line-height: 20px;
+  }
+}

@@ -1,23 +1,28 @@
 {
   "name": "vik-ui",
-  "version": "1.0.3",
+  "version": "1.0.28",
   "description": "",
-  "main": "src/index.js",
-  "module": "src/index.js",
-  "files": [
-    "es",
-    "lib"
-  ],
-  "scripts": {
-    "build": "vite build"
-  },
-  "keywords": [
-    "vik-ui"
-  ],
   "author": "Yaowen Liu",
   "license": "MIT",
-  "dependencies": {
-    "@vik-ui/utils": "workspace:^1.0.1"
+  "keywords": [
+    "vik-ui",
+    "vue3 shopify组建库"
+  ],
+  "main": "lib/vik-ui.cjs.js",
+  "module": "lib/vik-ui.es.js",
+  "typings": "lib/types/index.d.ts",
+  "files": [
+    "lib",
+    "theme-chalk"
+  ],
+  "scripts": {
+    "build": "vite build && mv lib/components lib/types"
   },
-  "typings": "lib/index.d.ts"
+  "dependencies": {
+    "@vik-ui/utils": "^1.0.3",
+    "@vueuse/core": "^9.5.0",
+    "axios": "^1.2.0",
+    "cropperjs": "^1.5.12",
+    "vue3-virtual-scroll": "^0.1.9"
+  }
 }

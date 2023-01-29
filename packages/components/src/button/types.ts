@@ -1,24 +1,33 @@
 /*
  * @Date: 2022-10-28 10:24:42
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-11-04 15:45:44
+ * @LastEditTime: 2022-11-07 15:59:18
  * @FilePath: /viking-ui/packages/components/src/button/types.ts
  */
-import { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes } from 'vue'
 
-export const ButtonType = ['default', 'primary', 'success', 'warning', 'danger']
+export const ButtonType = ['primary', 'success', 'warning', 'danger']
 
-export const ButtonSize = ['large', 'normal', 'small', 'mini'];
+export const ButtonSize = ['large', 'normal', 'small', 'mini']
 
 export const buttonProps = {
   type: {
     type: String,
-    values: ButtonType
+    validator(value: string) {
+      return ButtonType.includes(value)
+    },
   },
   size: {
     type: String,
-    values: ButtonSize
-  }
+    validator(value: string) {
+      return ButtonSize.includes(value)
+    },
+  },
+  round: Boolean,
+  disabled: Boolean,
+  fill: Boolean,
+  icon: String,
+  iconPosition: String,
 }
 
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>

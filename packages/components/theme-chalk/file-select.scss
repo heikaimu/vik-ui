@@ -1,0 +1,68 @@
+@import "./variables";
+@import "./mixins";
+
+.file-select {
+  padding: 20px;
+
+  &__list {
+    @include card-shadow;
+    overflow: hidden;
+    border-radius: $radius-medium;
+    margin: 0;
+    padding: 0;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    .item {
+      list-style: none;
+
+      &:last-child .file-select__card {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__card {
+    @include flex-row-sb;
+    height: 60px;
+    padding: 0 15px;
+    background-color: $color-white;
+    border-bottom: 1px solid $color-border-1;
+    cursor: pointer;
+    margin-bottom: 0;
+    position: relative;
+
+    .hide-input {
+      @include absolute;
+      visibility: hidden;
+    }
+
+    .text {
+      font-size: 16px;
+      color: $color-main;
+    }
+
+    svg {
+      width: 30px;
+      height: 24px;
+      fill: #626ab3;
+
+      &.red {
+        fill: $color-danger;
+      }
+    }
+  }
+}
+
+.third-card-wrapper {
+  @include flex-col-center;
+  width: 100%;
+
+  .text {
+    font-size: 14px;
+    color: $color-main;
+    line-height: 1;
+  }
+}
