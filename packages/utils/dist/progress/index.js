@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var ticker_1 = require("../ticker");
+import { addTicker, removeTicker } from '../ticker';
 var Progress = (function () {
     function Progress(_a) {
         var parts = _a.parts, _b = _a.speed, speed = _b === void 0 ? 1000 : _b, onProgress = _a.onProgress, onComplete = _a.onComplete;
@@ -15,7 +13,7 @@ var Progress = (function () {
         this._onComplete = onComplete || null;
     }
     Progress.prototype.start = function () {
-        (0, ticker_1.addTicker)(this.handleTicker, this);
+        addTicker(this.handleTicker, this);
     };
     Progress.prototype.handleTicker = function (val) {
         this.handleAutoAddPercent(val);
@@ -57,7 +55,7 @@ var Progress = (function () {
         this._completeParts += 1;
     };
     Progress.prototype.end = function () {
-        (0, ticker_1.removeTicker)(this.handleTicker, this);
+        removeTicker(this.handleTicker, this);
         if (this._onComplete)
             this._onComplete();
     };
@@ -70,4 +68,4 @@ var Progress = (function () {
     });
     return Progress;
 }());
-exports.default = Progress;
+export default Progress;

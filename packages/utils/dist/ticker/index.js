@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.removeTicker = exports.addTicker = void 0;
 var tickers = [];
 var startDate = Date.now();
 function animate() {
@@ -13,7 +10,7 @@ function animate() {
     requestAnimationFrame(animate);
 }
 animate();
-function addTicker(fn, listener) {
+export function addTicker(fn, listener) {
     for (var i = 0; i < tickers.length; i++) {
         var ticker = tickers[i];
         if (ticker.fn === fn && ticker.listener === listener)
@@ -24,12 +21,10 @@ function addTicker(fn, listener) {
         listener: listener,
     });
 }
-exports.addTicker = addTicker;
-function removeTicker(fn, listener) {
+export function removeTicker(fn, listener) {
     for (var i = 0; i < tickers.length; i++) {
         var ticker = tickers[i];
         if (ticker.fn === fn && ticker.listener === listener)
             tickers.splice(i, 1);
     }
 }
-exports.removeTicker = removeTicker;

@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.shopifyImageSetSize = exports.imageResetRate = exports.flipImage = exports.clearImageEdgeBlank = exports.loadImages = exports.loadImage = exports.cropImage = exports.colorMatrix = exports.imageReset = exports.downloadBase64 = exports.download = exports.getFileSize = exports.getBlobByUrl = exports.blobToDataURL = exports.dataURLtoBlob = exports.base64toUrl = exports.getObjectUrl = void 0;
 function getObjectUrl(file) {
     var url = null;
     if (window.createObjectURL !== undefined)
@@ -11,7 +8,6 @@ function getObjectUrl(file) {
         url = window.webkitURL.createObjectURL(file);
     return url;
 }
-exports.getObjectUrl = getObjectUrl;
 function dataURLtoBlob(str) {
     var arr = str.split(',');
     var firstStr = arr[0];
@@ -30,14 +26,12 @@ function dataURLtoBlob(str) {
     }
     return null;
 }
-exports.dataURLtoBlob = dataURLtoBlob;
 function base64toUrl(str) {
     var file = dataURLtoBlob(str);
     if (!file)
         return null;
     return getObjectUrl(file);
 }
-exports.base64toUrl = base64toUrl;
 function blobToDataURL(blob) {
     return new Promise(function (resolve) {
         var reader = new FileReader();
@@ -53,7 +47,6 @@ function blobToDataURL(blob) {
         };
     });
 }
-exports.blobToDataURL = blobToDataURL;
 function getBlobByUrl(url) {
     return new Promise(function (resolve) {
         fetch(url)
@@ -63,7 +56,6 @@ function getBlobByUrl(url) {
         });
     });
 }
-exports.getBlobByUrl = getBlobByUrl;
 function getFileSize(url) {
     return new Promise(function (resolve) {
         getBlobByUrl(url).then(function (res) {
@@ -71,21 +63,18 @@ function getFileSize(url) {
         });
     });
 }
-exports.getFileSize = getFileSize;
 function download(url, filename, suffix) {
     var link = document.createElement('a');
     link.download = "".concat(filename, ".").concat(suffix);
     link.href = url;
     link.click();
 }
-exports.download = download;
 function downloadBase64(str, filename, suffix) {
     var url = base64toUrl(str);
     if (!url)
         return;
     download(url, filename, suffix);
 }
-exports.downloadBase64 = downloadBase64;
 function imageReset(option) {
     var file = option.file;
     var targetSize = option.targetSize ? Number(option.targetSize) : undefined;
@@ -186,7 +175,6 @@ function imageReset(option) {
         }
     });
 }
-exports.imageReset = imageReset;
 function colorMatrix(url, option) {
     var brightness = option.brightness || 0;
     var contrast = option.contrast || 1;
@@ -216,7 +204,6 @@ function colorMatrix(url, option) {
         };
     });
 }
-exports.colorMatrix = colorMatrix;
 function cropImage(image, x, y, width, height) {
     var canvas = document.createElement('canvas');
     canvas.width = width;
@@ -226,7 +213,6 @@ function cropImage(image, x, y, width, height) {
     var url = canvas.toDataURL('image/png', 0.9);
     return url;
 }
-exports.cropImage = cropImage;
 function loadImages(images) {
     var queue = images.map(function (url) {
         return loadImage(url);
@@ -235,7 +221,6 @@ function loadImages(images) {
         return res;
     });
 }
-exports.loadImages = loadImages;
 function loadImage(url) {
     return new Promise(function (resolve) {
         var image = new Image();
@@ -246,7 +231,6 @@ function loadImage(url) {
         image.src = url;
     });
 }
-exports.loadImage = loadImage;
 function clearImageEdgeBlank(url, padding) {
     if (padding === void 0) { padding = 0; }
     return new Promise(function (resolve) {
@@ -298,7 +282,6 @@ function clearImageEdgeBlank(url, padding) {
         image.crossOrigin = 'Anonymous';
     });
 }
-exports.clearImageEdgeBlank = clearImageEdgeBlank;
 function flipImage(data, type, isJPG) {
     if (type === void 0) { type = 'base64'; }
     return new Promise(function (resolve, reject) {
@@ -337,7 +320,6 @@ function flipImage(data, type, isJPG) {
         image.crossOrigin = 'Anonymous';
     });
 }
-exports.flipImage = flipImage;
 function imageResetRate(params) {
     var url = params.url, width = params.width, height = params.height;
     var createImage = function (image, x, y, width, height) {
@@ -377,7 +359,6 @@ function imageResetRate(params) {
         img.src = url;
     });
 }
-exports.imageResetRate = imageResetRate;
 function shopifyImageSetSize(url, width) {
     if (url.includes('cdn.')) {
         var newURL = url.replace(/(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.gif)/g, "_".concat(width, "x$1"));
@@ -385,4 +366,4 @@ function shopifyImageSetSize(url, width) {
     }
     return url;
 }
-exports.shopifyImageSetSize = shopifyImageSetSize;
+export { getObjectUrl, base64toUrl, dataURLtoBlob, blobToDataURL, getBlobByUrl, getFileSize, download, downloadBase64, imageReset, colorMatrix, cropImage, loadImage, loadImages, clearImageEdgeBlank, flipImage, imageResetRate, shopifyImageSetSize, };

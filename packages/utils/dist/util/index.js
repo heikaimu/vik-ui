@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.number = exports.getRandomID = exports.throttle = exports.debounce = void 0;
 function debounce(fn, delay) {
     var timer = null;
     return function () {
@@ -15,7 +12,6 @@ function debounce(fn, delay) {
         }, delay);
     };
 }
-exports.debounce = debounce;
 function throttle(fn, delay, atleast) {
     var timer = null;
     var previous = null;
@@ -37,12 +33,10 @@ function throttle(fn, delay, atleast) {
         }
     };
 }
-exports.throttle = throttle;
 function getRandomID(length) {
     if (length === void 0) { length = 8; }
     return Number(Math.random().toString().substr(3, length) + Date.now()).toString(36);
 }
-exports.getRandomID = getRandomID;
 function number(val, inscriber) {
     if (inscriber === void 0) { inscriber = 2; }
     var str = val.toFixed(inscriber);
@@ -55,4 +49,4 @@ function number(val, inscriber) {
     }
     return x1 + x2.substr(0, inscriber + 1);
 }
-exports.number = number;
+export { debounce, throttle, getRandomID, number, };

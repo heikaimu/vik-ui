@@ -16,7 +16,7 @@
     "theme-chalk"
   ],
   "scripts": {
-    "build": "vite build && mv lib/components lib/types"
+    "build": "vite build"
   },
   "dependencies": {
     "@vik-ui/utils": "^1.0.3",

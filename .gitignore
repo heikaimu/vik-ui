@@ -1,6 +1,7 @@
 node_modules
 netlify-page
 .DS_Store
-# dist
+*dist
+*lib
 dist-ssr
 *.local
