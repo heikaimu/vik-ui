@@ -3,18 +3,18 @@
 
 .base-header {
   height: 50px;
-  background-color: $color-primary;
+  background-color: $color-white;
   position: relative;
+  border-bottom: 1px solid $color-border-3;
 
   &__heading {
     @include absCenter;
     margin: 0;
-    color: $color-white;
+    color: $color-main;
     text-align: center;
-
+  
     &--main {
       font-size: $font-medium;
-      font-weight: 700;
       color: currentColor;
       line-height: 1;
       margin: 0;
@@ -39,7 +39,7 @@
     width: 50px;
     height: 50px;
     cursor: pointer;
-    color: $color-white;
+    color: $color-main;
     font-size: 20px;
   }
 }

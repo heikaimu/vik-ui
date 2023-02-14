@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-10-28 10:24:42
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-11-18 10:57:39
+ * @LastEditTime: 2023-02-14 13:25:05
  * @FilePath: /viking-ui/packages/components/src/card/types.ts
  */
 import type { ExtractPropTypes } from 'vue'
@@ -30,6 +30,14 @@ export const cardProps = {
   ratio: {
     type: [Number, String],
     default: 'auto',
+  },
+  active: {
+    type: Boolean,
+    default: false,
+  },
+  closable: {
+    type: Boolean,
+    default: false,
   },
 }
 

@@ -2,8 +2,9 @@
 @import "./mixins";
 
 .viking-card {
-  padding: 4px;
   cursor: pointer;
+  position: relative;
+  background-color: $color-white;
 
   &--shadow {
     box-shadow: 0 0 5px $color-border-1;
@@ -11,6 +12,10 @@
 
   &--border {
     border: 1px solid $color-border-1;
+  }
+
+  &--active {
+    outline: 1px solid $color-primary;
   }
 
   &__cover {
@@ -27,6 +32,43 @@
     color: $color-main;
     line-height: 24px;
     margin: 0;
+  }
+
+  &__close {
+    position: absolute;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    right: -0.5em;
+    top: -0.5em;
+    z-index: 999;
+    border: 1px solid $color-white;
+    background-color: $color-danger;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    color: $color-white;
+    @include card-shadow;
+
+    &:hover {
+      @include card-shadow-lg;
+    }
+  }
+
+  &__active {
+    @include absolute;
+    left: 2px;
+    right: 2px;
+    top: 2px;
+    bottom: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    color: $color-primary;
+    font-size: 2rem;
   }
 }
 
@@ -46,5 +88,27 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+
+.viking-plus-card {
+  border: 1px dashed $plus-border-color;
+  border-radius: 4px;
+  background-color: $plus-bg-color;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px dashed $color-primary;
+  }
+
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    color: $plus-text-color;
   }
 }

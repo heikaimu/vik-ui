@@ -1,14 +1,18 @@
 <!--
  * @Date: 2022-11-10 16:34:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-12-29 11:01:37
+ * @LastEditTime: 2023-02-14 13:28:07
  * @FilePath: /viking-ui/packages/components/src/card/Card.vue
 -->
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
+import Icon from '../icon/Icon.vue'
 import { cardProps } from './types'
 export default defineComponent({
   name: 'VikCard',
+  components: {
+    Icon,
+  },
   props: cardProps,
   setup(props) {
     const ratioStyle = computed(() => {
@@ -22,6 +26,7 @@ export default defineComponent({
       return {
         'viking-card--shadow': props.shadow,
         'viking-card--border': props.border,
+        'viking-card--active': props.active,
       }
     })
 
@@ -42,6 +47,12 @@ export default defineComponent({
 
 <template>
   <div class="viking-card" :class="cardClass" :style="cardStyle">
+    <div v-if="closable" class="viking-card__close">
+      <Icon name="close-bold" />
+    </div>
+    <div v-if="active" class="viking-card__active">
+      <Icon name="select-bold" />
+    </div>
     <div v-if="ratio === 'auto'" class="viking-card__cover">
       <img :src="src" alt="">
     </div>

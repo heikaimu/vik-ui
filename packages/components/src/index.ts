@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-10-28 10:21:14
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-12-20 11:15:33
+ * @LastEditTime: 2023-02-13 09:42:11
  * @FilePath: /viking-ui/packages/components/src/index.ts
  */
 export { default as VikButton } from './button'
@@ -15,6 +15,7 @@ export { default as VikTab } from './tab'
 export { default as VikTabPane } from './tab-pane'
 export { default as VikDivider } from './divider'
 export { default as VikCard } from './card'
+export { default as VikPlusCard } from './card-plus'
 export { default as VikFileSelect } from './file-select'
 export { default as VikCropper } from './cropper'
 export { default as VikGroupList } from './group-list'

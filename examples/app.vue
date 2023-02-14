@@ -1,13 +1,13 @@
 <!--
  * @Date: 2022-10-28 10:14:59
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-01-04 14:04:32
+ * @LastEditTime: 2023-02-13 09:42:41
  * @FilePath: /viking-ui/examples/app.vue
 -->
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import { VikButton, VikCard, VikCol, VikContainer, VikCropper, VikDivider, VikFileSelect, VikGroupList, VikHeader, VikIcon, VikProductSelector, VikRow, VikTab, VikTabPane, VikUploader } from '../packages/components/index'
+import { VikButton, VikCard, VikCol, VikContainer, VikCropper, VikDivider, VikFileSelect, VikGroupList, VikHeader, VikIcon, VikPlusCard, VikProductSelector, VikRow, VikTab, VikTabPane, VikUploader } from '../packages/components/index'
 import { getObjectUrl } from '../packages/utils'
 
 const cLoading = ref(true)
@@ -124,6 +124,14 @@ function generateConifg(data: any, website: string, productType: string) {
 
   return curProductConfig
 }
+
+function handleCloseCard() {
+  alert()
+}
+
+function handleClickCard() {
+  alert(2)
+}
 </script>
 
 <template>
@@ -132,7 +140,9 @@ function generateConifg(data: any, website: string, productType: string) {
       <VikDivider>关联产品</VikDivider>
       <VikContainer :border="true" :shadow="true">
         <template #header>
-          <VikHeader title="Maybe You Like" icon-name="close-bold" @close="handleClose" />
+          <VikHeader title="Maybe You Like" icon-name="close-bold" @close="handleClose">
+            x
+          </VikHeader>
         </template>
         <template #main>
           <VikProductSelector v-model:data="productSelection" :products="products" />
@@ -176,10 +186,10 @@ function generateConifg(data: any, website: string, productType: string) {
               children: 'images',
               label: 'name',
               id: 'id',
-            }" pos-key="id" pos-value="5c6td1zk2d8000" :card-height="300"
+            }" pos-key="id" pos-value="5c6td1zk2d8000" :card-height="100"
           >
             <template #default="{ data }">
-              <div class="test-card" style="height:200px">
+              <div class="test-card" style="height:100px">
                 <img :src="data.cover" alt="">
               </div>
             </template>
@@ -306,6 +316,9 @@ function generateConifg(data: any, website: string, productType: string) {
       <VikDivider>卡片</VikDivider>
       <VikRow :gutter="10">
         <VikCol :span="4">
+          <VikPlusCard />
+        </VikCol>
+        <VikCol :span="4">
           <VikCard shadow src="https://images7.alphacoders.com/126/1265780.jpg" title="House of the Dragon" sub="" />
         </VikCol>
         <VikCol :span="4">
@@ -321,12 +334,17 @@ function generateConifg(data: any, website: string, productType: string) {
           <VikCard
             :ratio="1" shadow src="https://images7.alphacoders.com/126/1265780.jpg" title="House of the Dragon"
             sub=""
+            closable
+            @click="handleClickCard"
+            @close="handleCloseCard"
           />
         </VikCol>
         <VikCol :span="6">
           <VikCard
-            :border="true" :ratio="1" radius="50%" shadow src="https://images7.alphacoders.com/126/1265780.jpg"
+            :border="true" :ratio="1" active fit="contain" radius="50%" shadow src="https://images7.alphacoders.com/126/1265780.jpg"
             sub=""
+            @click="handleClickCard"
+            @close="handleCloseCard"
           />
         </VikCol>
         <VikCol :span="12">

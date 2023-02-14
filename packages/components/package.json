@@ -1,6 +1,6 @@
 {
   "name": "vik-ui",
-  "version": "1.0.28",
+  "version": "1.1.3",
   "description": "",
   "author": "Yaowen Liu",
   "license": "MIT",
@@ -10,7 +10,7 @@
   ],
   "main": "lib/vik-ui.cjs.js",
   "module": "lib/vik-ui.es.js",
-  "typings": "lib/types/index.d.ts",
+  "typings": "lib/src/index.d.ts",
   "files": [
     "lib",
     "theme-chalk"

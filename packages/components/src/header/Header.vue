@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-10 15:07:49
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-12-29 11:08:53
+ * @LastEditTime: 2023-02-03 11:53:00
  * @FilePath: /viking-ui/packages/components/src/header/Header.vue
 -->
 <script lang="ts">
@@ -38,5 +38,6 @@ export default defineComponent({
         {{ sub }}
       </p>
     </div>
+    <slot />
   </div>
 </template>

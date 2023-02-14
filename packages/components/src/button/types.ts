@@ -1,12 +1,12 @@
 /*
  * @Date: 2022-10-28 10:24:42
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-11-07 15:59:18
+ * @LastEditTime: 2023-02-10 10:12:52
  * @FilePath: /viking-ui/packages/components/src/button/types.ts
  */
 import type { ExtractPropTypes } from 'vue'
 
-export const ButtonType = ['primary', 'success', 'warning', 'danger']
+export const ButtonType = ['primary', 'success', 'warning', 'danger', 'info']
 
 export const ButtonSize = ['large', 'normal', 'small', 'mini']
 
