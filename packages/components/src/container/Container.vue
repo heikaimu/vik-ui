@@ -1,17 +1,15 @@
 <!--
  * @Date: 2022-11-10 15:49:45
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-12-29 11:03:03
+ * @LastEditTime: 2023-02-23 13:12:14
  * @FilePath: /viking-ui/packages/components/src/container/Container.vue
 -->
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import VikLoading from '../loading/Loading.vue'
 import { containerProps } from './types'
 
 export default defineComponent({
   name: 'VikContainer',
-  components: { VikLoading },
   props: containerProps,
   setup(props) {
     const containerClass = computed(() => {
@@ -39,7 +37,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="viking-container" :class="containerClass" :style="containerStyle">
+  <div class="viking-container" :class="containerClass">
     <div class="viking-container__header">
       <slot name="header" />
     </div>
@@ -49,6 +47,10 @@ export default defineComponent({
     <div class="viking-container__footer">
       <slot name="footer" />
     </div>
-    <VikLoading v-if="loading" />
+    <transition name="loading-fade">
+      <div v-if="loading" class="viking-container__loading">
+        <img :src="loadingGif" alt="">
+      </div>
+    </transition>
   </div>
 </template>

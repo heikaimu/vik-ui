@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-10 15:07:49
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-03 11:53:00
+ * @LastEditTime: 2023-02-17 13:55:05
  * @FilePath: /viking-ui/packages/components/src/header/Header.vue
 -->
 <script lang="ts">
@@ -31,9 +31,9 @@ export default defineComponent({
       <Icon :name="iconName" />
     </span>
     <div class="base-header__heading">
-      <h2 v-if="title" class="base-header__heading--main">
+      <p v-if="title" class="base-header__heading--main">
         {{ title }}
-      </h2>
+      </p>
       <p v-if="sub" class="base-header__heading--sub">
         {{ sub }}
       </p>

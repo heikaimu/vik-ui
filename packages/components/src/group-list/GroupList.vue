@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-23 17:19:33
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-01-04 14:10:35
+ * @LastEditTime: 2023-02-24 10:19:48
  * @FilePath: /viking-ui/packages/components/src/group-list/GroupList.vue
 -->
 <script lang="ts">
@@ -15,7 +15,7 @@ export default defineComponent({
   name: 'VikGroupList',
   components: { Navigation, VirtualScroll },
   props: groupListProps,
-  setup(props) {
+  setup(props, ctx) {
     const { vScroll, listAll, currentGroupId, navigation, changeGroup, setActiveGroup } = useGroupList(props)
 
     const wrapperStyle = computed(() => {
@@ -24,8 +24,15 @@ export default defineComponent({
       }
     })
 
+    const leftStyle = computed(() => {
+      return {
+        width: `${props.leftWidth}px`,
+      }
+    })
+
     // 滚动返回索引
-    function handleScroll(start: number) {
+    function handleScroll(start: number, y: number) {
+      ctx.emit('scroll', start, y)
       setActiveGroup(start)
     }
 
@@ -35,6 +42,7 @@ export default defineComponent({
       currentGroupId,
       navigation,
       wrapperStyle,
+      leftStyle,
       changeGroup,
       setActiveGroup,
       handleScroll,
@@ -45,7 +53,7 @@ export default defineComponent({
 
 <template>
   <div class="group-list">
-    <div class="group-list__left">
+    <div class="group-list__left" :style="leftStyle">
       <Navigation :value="currentGroupId" :list="navigation" @change="changeGroup" />
     </div>
     <div class="group-list__right">

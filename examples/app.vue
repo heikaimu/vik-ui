@@ -1,13 +1,13 @@
 <!--
  * @Date: 2022-10-28 10:14:59
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-13 09:42:41
+ * @LastEditTime: 2023-02-24 10:27:58
  * @FilePath: /viking-ui/examples/app.vue
 -->
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import { VikButton, VikCard, VikCol, VikContainer, VikCropper, VikDivider, VikFileSelect, VikGroupList, VikHeader, VikIcon, VikPlusCard, VikProductSelector, VikRow, VikTab, VikTabPane, VikUploader } from '../packages/components/index'
+import { VikBox, VikButton, VikCard, VikCol, VikContainer, VikCropper, VikDivider, VikFileSelect, VikGroupList, VikHeader, VikIcon, VikPlusCard, VikProductSelector, VikRow, VikTab, VikTabPane, VikUploader } from '../packages/components/index'
 import { getObjectUrl } from '../packages/utils'
 
 const cLoading = ref(true)
@@ -132,10 +132,22 @@ function handleCloseCard() {
 function handleClickCard() {
   alert(2)
 }
+
+const posY = ref(200)
+function handleScroll(index: number, y: number) {
+  posY.value = y
+}
 </script>
 
 <template>
   <main class="main-wrapper">
+    <section>
+      <VikDivider>盒子</VikDivider>
+      <VikBox :pd="10" :pl="40" :pr="30">
+        <div style="width:100px;height:100px;background:red" />
+      </VikBox>
+    </section>
+
     <section>
       <VikDivider>关联产品</VikDivider>
       <VikContainer :border="true" :shadow="true">
@@ -186,7 +198,8 @@ function handleClickCard() {
               children: 'images',
               label: 'name',
               id: 'id',
-            }" pos-key="id" pos-value="5c6td1zk2d8000" :card-height="100"
+            }" :pos="posY" :card-height="100"
+            @scroll="handleScroll"
           >
             <template #default="{ data }">
               <div class="test-card" style="height:100px">
@@ -319,7 +332,7 @@ function handleClickCard() {
           <VikPlusCard />
         </VikCol>
         <VikCol :span="4">
-          <VikCard shadow src="https://images7.alphacoders.com/126/1265780.jpg" title="House of the Dragon" sub="" />
+          <VikCard shadow src="https://images7.alphacoders.com/126/1265780.jpg" :omits2="true" title="111House of the DragonHouse of the DragonHouse of the Dragon" sub="" />
         </VikCol>
         <VikCol :span="4">
           <VikCard src="https://images7.alphacoders.com/126/1265780.jpg" title="House of the Dragon" sub="" />

@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-10-28 10:24:42
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-11-10 15:58:27
+ * @LastEditTime: 2023-02-21 14:18:53
  * @FilePath: /viking-ui/packages/components/src/container/types.ts
  */
 import type { ExtractPropTypes } from 'vue'
@@ -34,6 +34,10 @@ export const containerProps = {
   loading: {
     type: Boolean,
     default: false,
+  },
+  loadingGif: {
+    type: String,
+    default: 'https://cdn.shopifycdn.net/s/files/1/0343/0275/4948/files/01.gif',
   },
 }
 

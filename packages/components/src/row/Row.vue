@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-10 16:34:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-12-29 11:02:36
+ * @LastEditTime: 2023-02-17 13:31:11
  * @FilePath: /viking-ui/packages/components/src/row/Row.vue
 -->
 <script lang="ts">
@@ -15,8 +15,10 @@ export default defineComponent({
 
     const gridStyle = computed(() => {
       return {
-        padding: `${props.gutter / 2}px`,
-        backgroundColor: props.backgroundColor,
+        marginLeft: `${-props.gutter / 2}px`,
+        marginRight: `${-props.gutter / 2}px`,
+        marginTop: `${-props.gutter / 2}px`,
+        marginBottom: `${-props.gutter / 2}px`,
       }
     })
 

@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-10-28 10:24:42
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-01-04 14:10:21
+ * @LastEditTime: 2023-02-24 10:26:54
  * @FilePath: /viking-ui/packages/components/src/group-list/types.ts
  */
 import type { ExtractPropTypes, PropType } from 'vue'
@@ -19,6 +19,10 @@ export const groupListProps = {
       id: 'id',
     }),
   },
+  leftWidth: {
+    type: Number,
+    default: 80,
+  },
   activeName: {
     type: String,
   },
@@ -27,6 +31,10 @@ export const groupListProps = {
   },
   posValue: {
     type: [String, Number],
+  },
+  pos: {
+    type: Number,
+    default: 0,
   },
   cardHeight: {
     type: Number,

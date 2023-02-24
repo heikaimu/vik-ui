@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-18 16:00:35
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-12-29 11:14:43
+ * @LastEditTime: 2023-02-23 11:07:43
  * @FilePath: /viking-ui/packages/components/src/cropper/Cropper.vue
 -->
 <script lang="ts">
@@ -33,7 +33,7 @@ export default defineComponent({
         cropBoxMovable: true, // 允许通过拖动移动裁剪框。默认true
         cropBoxResizable: true, // 以通过拖动来调整裁剪框的大小 默认true
         background: true, // 显示容器的网格背景
-        movable: true, // 移动图像
+        movable: false, // 移动图像
       })
     }
 

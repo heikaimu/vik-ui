@@ -5,7 +5,7 @@ import { nextTick } from 'vue'
  * @Author: Yaowen Liu
  * @Date: 2021-08-04 14:27:42
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-11-25 15:35:56
+ * @LastEditTime: 2023-02-24 10:29:37
  */
 import { onMounted } from 'vue'
 import type { GroupListProps } from './types'
@@ -23,12 +23,17 @@ export function useGroupList(props: GroupListProps) {
     setActiveGroup,
     setBodyListAll,
     scrollToIndex,
+    scrollToPos,
   } = useVirtualGroupList(props.data, props.props)
 
   onMounted(() => {
     setBodyListAll()
     nextTick(() => {
-      props.posKey && scrollTo()
+      if (props.pos)
+        scrollToPos(props.pos)
+
+      else
+        props.posKey && scrollTo()
     })
   })
 

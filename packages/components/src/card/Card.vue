@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-10 16:34:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-14 13:28:07
+ * @LastEditTime: 2023-02-22 16:19:25
  * @FilePath: /viking-ui/packages/components/src/card/Card.vue
 -->
 <script lang="ts">
@@ -14,7 +14,7 @@ export default defineComponent({
     Icon,
   },
   props: cardProps,
-  setup(props) {
+  setup(props, ctx) {
     const ratioStyle = computed(() => {
       return {
         'padding-bottom': `${props.ratio as number * 100}%`,
@@ -36,10 +36,15 @@ export default defineComponent({
       }
     })
 
+    const handleClose = () => {
+      ctx.emit('close')
+    }
+
     return {
       ratioStyle,
       cardClass,
       cardStyle,
+      handleClose,
     }
   },
 })
@@ -47,7 +52,7 @@ export default defineComponent({
 
 <template>
   <div class="viking-card" :class="cardClass" :style="cardStyle">
-    <div v-if="closable" class="viking-card__close">
+    <div v-if="closable" class="viking-card__close" @click.stop="handleClose">
       <Icon name="close-bold" />
     </div>
     <div v-if="active" class="viking-card__active">
@@ -58,11 +63,11 @@ export default defineComponent({
     </div>
     <div v-else class="ratio-image" :style="ratioStyle">
       <div class="ratio-image__box">
-        <img class="ratio-image__source" :src="src" alt="">
+        <img class="ratio-image__source" :style="{ objectFit: fit }" :src="src" alt="">
       </div>
     </div>
     <div class="viking-card__info">
-      <p v-if="title" class="viking-card__title">
+      <p v-if="title" class="viking-card__title" :class="{ 'viking-card__title--omits2': omits2 }">
         {{ title }}
       </p>
       <slot />

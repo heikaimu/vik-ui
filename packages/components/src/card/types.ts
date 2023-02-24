@@ -1,10 +1,13 @@
+import type { PropType } from 'vue'
 /*
  * @Date: 2022-10-28 10:24:42
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-14 13:25:05
+ * @LastEditTime: 2023-02-22 16:22:23
  * @FilePath: /viking-ui/packages/components/src/card/types.ts
  */
 import type { ExtractPropTypes } from 'vue'
+
+const FitType = ['cover', 'contain']
 
 export const cardProps = {
   src: {
@@ -36,6 +39,17 @@ export const cardProps = {
     default: false,
   },
   closable: {
+    type: Boolean,
+    default: false,
+  },
+  fit: {
+    type: String as PropType<'cover' | 'contain'>,
+    default: 'contain',
+    validator(value: string) {
+      return FitType.includes(value)
+    },
+  },
+  omits2: {
     type: Boolean,
     default: false,
   },

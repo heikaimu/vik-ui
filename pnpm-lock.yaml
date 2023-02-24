@@ -36,13 +36,13 @@ importers:
       '@vueuse/core': ^9.5.0
       axios: ^1.2.0
       cropperjs: ^1.5.12
-      vue3-virtual-scroll: ^0.1.9
+      vue3-virtual-scroll: ^0.1.10
     dependencies:
       '@vik-ui/utils': link:../utils
       '@vueuse/core': 9.5.0
       axios: 1.2.0
       cropperjs: 1.5.12
-      vue3-virtual-scroll: 0.1.9
+      vue3-virtual-scroll: 0.1.10
 
   packages/utils:
     specifiers: {}
@@ -3104,8 +3104,8 @@ packages:
       '@vue/server-renderer': 3.2.36_vue@3.2.36
       '@vue/shared': 3.2.36
 
-  /vue3-virtual-scroll/0.1.9:
-    resolution: {integrity: sha512-GtkMyUu0UpzEqaAh9tlj+ZUswPCYmk0ugM3JidSlQH9EDltozhoRpQzo/TOW1qws4oYsyqdQVGIvmQdOTDO45g==}
+  /vue3-virtual-scroll/0.1.10:
+    resolution: {integrity: sha512-l5sw01LfEQ0S6q5Lw4Ll5+sccnsVbB79LX4piCOaETbAaJc3sNRvou2L/yn15uIOER/P9glD0afIkJ2OW2F/1A==}
     dependencies:
       '@vueuse/core': 8.9.4_vue@3.2.36
       element-plus: 2.2.22_vue@3.2.36

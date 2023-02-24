@@ -120,6 +120,12 @@
   }
 
   // 尺寸
+  &--mini {
+    padding: 7px 15px;
+    font-size: $font-ex-small;
+    border-radius: 3px;
+  }
+
   &--small {
     padding: 9px 15px;
     font-size: $font-ex-small;
@@ -132,10 +138,10 @@
     border-radius: 4px;
   }
 
-  &--mini {
-    padding: 7px 15px;
-    font-size: $font-ex-small;
-    border-radius: 3px;
+  &--large {
+    padding: 15px 25px;
+    font-size: $font-large;
+    border-radius: 6px;
   }
 
   &.is-fill,

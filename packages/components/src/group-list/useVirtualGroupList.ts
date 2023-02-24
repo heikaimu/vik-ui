@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-11-25 10:28:44
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-11-28 13:45:38
+ * @LastEditTime: 2023-02-24 10:29:01
  * @FilePath: /viking-ui/packages/components/src/group-list/useVirtualGroupList.ts
  */
 import { computed, ref } from 'vue'
@@ -95,6 +95,14 @@ export function useVirtualGroupList(list: any[], listProps: PropsType) {
     vScroll.value.scrollToIndex(index, 1)
   }
 
+  // 滚动到索引
+  function scrollToPos(y: number) {
+    if (!vScroll.value)
+      return
+
+    vScroll.value.scrollToPos(y)
+  }
+
   return {
     currentGroupId,
     currentGroupName,
@@ -105,5 +113,6 @@ export function useVirtualGroupList(list: any[], listProps: PropsType) {
     setActiveGroup,
     setBodyListAll,
     scrollToIndex,
+    scrollToPos,
   }
 }
