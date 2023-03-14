@@ -1,7 +1,7 @@
 <!--
  * @Date: 2023-02-17 11:13:13
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-17 13:16:30
+ * @LastEditTime: 2023-03-14 15:25:43
  * @FilePath: /viking-ui/packages/components/src/box/Box.vue
 -->
 <script lang="ts">

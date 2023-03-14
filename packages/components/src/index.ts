@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-10-28 10:21:14
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-17 13:16:58
+ * @LastEditTime: 2023-03-14 15:26:19
  * @FilePath: /viking-ui/packages/components/src/index.ts
  */
 export { default as VikButton } from './button'
@@ -22,4 +22,5 @@ export { default as VikGroupList } from './group-list'
 export { default as VikUploader } from './uploader'
 export { default as VikProductSelector } from './product-selector'
 export { default as VikBox } from './box'
+export { default as VikAlert } from './alert'
 

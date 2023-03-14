@@ -2,7 +2,7 @@ import type { PropType } from 'vue'
 /*
  * @Date: 2022-10-28 10:24:42
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-12-21 13:59:47
+ * @LastEditTime: 2023-03-06 13:21:06
  * @FilePath: /viking-ui/packages/components/src/product-selector/types.ts
  */
 import type { ExtractPropTypes } from 'vue'
@@ -31,6 +31,10 @@ export const productSelectorProps = {
   data: {
     type: Array as PropType<SelectProduct[]>,
     default: () => [],
+  },
+  symbol: {
+    type: String,
+    default: '$',
   },
 }
 

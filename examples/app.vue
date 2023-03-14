@@ -1,13 +1,13 @@
 <!--
  * @Date: 2022-10-28 10:14:59
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-24 10:27:58
+ * @LastEditTime: 2023-03-14 15:26:34
  * @FilePath: /viking-ui/examples/app.vue
 -->
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import { VikBox, VikButton, VikCard, VikCol, VikContainer, VikCropper, VikDivider, VikFileSelect, VikGroupList, VikHeader, VikIcon, VikPlusCard, VikProductSelector, VikRow, VikTab, VikTabPane, VikUploader } from '../packages/components/index'
+import { VikAlert, VikBox, VikButton, VikCard, VikCol, VikContainer, VikCropper, VikDivider, VikFileSelect, VikGroupList, VikHeader, VikIcon, VikPlusCard, VikProductSelector, VikRow, VikTab, VikTabPane, VikUploader } from '../packages/components/index'
 import { getObjectUrl } from '../packages/utils'
 
 const cLoading = ref(true)
@@ -137,6 +137,15 @@ const posY = ref(200)
 function handleScroll(index: number, y: number) {
   posY.value = y
 }
+
+function handleClick() {
+  alert('按钮点击')
+}
+
+const vikAlert = ref(null)
+function alertError() {
+  vikAlert.value.show()
+}
 </script>
 
 <template>
@@ -144,8 +153,12 @@ function handleScroll(index: number, y: number) {
     <section>
       <VikDivider>盒子</VikDivider>
       <VikBox :pd="10" :pl="40" :pr="30">
-        <div style="width:100px;height:100px;background:red" />
+        <div style="width:100px;height:100px;background:red" @click="alertError" />
       </VikBox>
+
+      <VikAlert ref="vikAlert">
+        错误信息
+      </VikAlert>
     </section>
 
     <section>
@@ -257,7 +270,7 @@ function handleScroll(index: number, y: number) {
       <VikButton disabled>
         禁用按钮
       </VikButton>
-      <VikButton type="primary" disabled>
+      <VikButton type="primary" disabled @click="handleClick">
         主要按钮
       </VikButton>
       <VikButton type="success" disabled>

@@ -20,7 +20,7 @@ export default defineComponent({
 
     // 打开filestack
     function handleOpenFilestack() {
-      const client = Filestack.filestack.init('AvKLw5hsbQm2sVOtawSNgz')
+      const client = filestack.init('AvKLw5hsbQm2sVOtawSNgz')
       const options = {
         fromSources: ['googledrive', 'instagram', 'facebook'],
         accept: ['image/*'],
@@ -64,7 +64,7 @@ export default defineComponent({
       <li class="item">
         <label id="menu_choose_album" class="file-select__card">
           <input type="file" class="hide-input" accept="image/*" @change="handleSelectFile">
-          <span class="text">Choose from your album</span>
+          <span class="text">{{ text1 }}</span>
           <svg viewBox="0 0 30 30">
             <path
               d="M12.2908253,14.0142199 L17.66,18.2328549 L16,21 L20.5857864,16.4142136 C21.366835,15.633165 22.633165,15.633165 23.4142136,16.4142136 L26,18.9998549 L26,21 C26,22.6568542 24.6568542,24 23,24 L7,24 C5.34314575,24 4,22.6568542 4,21 L4,19 L9.75359944,14.0683433 C10.478128,13.4473189 11.5404728,13.4246572 12.2908253,14.0142199 Z"
@@ -79,7 +79,7 @@ export default defineComponent({
       <li v-if="isMobile" class="item">
         <label id="menu_take_photo" class="file-select__card">
           <input type="file" class="hide-input" accept="image/*" capture="environment" @change="handleSelectFile">
-          <span class="text">Take A Photo</span>
+          <span class="text">{{ text2 }}</span>
           <svg viewBox="0 0 30 30" class="red">
             <path
               d="M26,14.4996803 L26,21 C26,22.1045695 25.1045695,23 24,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,14.4996803 L10.1002017,14.4990961 C10.0344945,14.8224862 10,15.1572148 10,15.5 C10,18.2614237 12.2385763,20.5 15,20.5 C17.7614237,20.5 20,18.2614237 20,15.5 C20,15.1572148 19.9655055,14.8224862 19.8997983,14.4990961 L26,14.4996803 Z"
@@ -156,7 +156,7 @@ export default defineComponent({
                 </g>
               </svg>
             </div>
-            <span class="text">Choose from Online Services</span>
+            <span class="text">{{ text3 }}</span>
           </div>
         </label>
       </li>

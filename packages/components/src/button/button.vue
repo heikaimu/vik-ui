@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-10-28 10:21:23
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-12-29 11:00:20
+ * @LastEditTime: 2023-03-10 13:25:19
  * @FilePath: /viking-ui/packages/components/src/button/Button.vue
 -->
 <script lang="ts">
@@ -12,7 +12,7 @@ export default defineComponent({
   name: 'VikButton',
   components: { Icon },
   props: buttonProps,
-  setup(props) {
+  setup(props, ctx) {
     // 主样式
     const styleClass = computed(() => {
       return {
@@ -34,16 +34,24 @@ export default defineComponent({
       }
     })
 
+    const handleClick = () => {
+      if (props.disabled)
+        return
+
+      ctx.emit('click')
+    }
+
     return {
       styleClass,
       iconFont,
+      handleClick,
     }
   },
 })
 </script>
 
 <template>
-  <button class="vik-button" :class="styleClass">
+  <button class="vik-button" :class="styleClass" :disabled="disabled">
     <Icon v-if="iconFont.iconName && iconFont.position !== 'right'" class="icon" :name="iconFont.iconName" />
     <slot />
     <Icon v-if="iconFont.position === 'right' && iconFont.iconName" class="icon" :name="iconFont.iconName" />

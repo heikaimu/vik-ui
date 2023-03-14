@@ -119,6 +119,18 @@
     cursor: not-allowed;
   }
 
+  &.is-disabled:hover {
+    &:hover {
+      transform: translate3d(0, 0, 0);
+      box-shadow: none;
+  
+      &::after {
+        transform: scale3d(0, 0, 0);
+        opacity: 0;
+      }
+    }
+  }
+
   // 尺寸
   &--mini {
     padding: 7px 15px;

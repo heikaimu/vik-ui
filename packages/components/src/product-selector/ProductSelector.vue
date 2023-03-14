@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-10 16:34:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-22 16:20:37
+ * @LastEditTime: 2023-03-06 13:20:39
  * @FilePath: /viking-ui/packages/components/src/product-selector/ProductSelector.vue
 -->
 <script lang="ts">
@@ -84,7 +84,7 @@ export default defineComponent({
           <Card :ratio="1" shadow :src="item.url" :title="item.title" sub="" v-bind="$attrs">
             <div class="card-wrapper__bottom">
               <p class="card-wrapper__bottom--price">
-                {{ item.price }}
+                {{ symbol }} {{ item.price }}
               </p>
               <Icon class="float-svg" name="tubiaozhizuomoban-1" />
             </div>
