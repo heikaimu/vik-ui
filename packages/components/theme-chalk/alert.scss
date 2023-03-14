@@ -1,0 +1,41 @@
+@import "./variables";
+@import "./mixins";
+
+.vik-alert {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+
+  &__content {
+    background: rgba($color: $color-black, $alpha: 0.8);
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    top: 5px;
+    border-radius: 4px;
+    padding: 5px 10px;
+  }
+
+  &__text {
+    font-size: $font-base;
+    color: $color-white;
+    text-align: center;
+  }
+}
+
+.alert-slide-enter-from,
+.alert-slide-leave-to {
+  opacity: 0;
+  transform: translate3d(0, -50%, 0);
+}
+
+.alert-slide-enter-to,
+.alert-slide-leave-from {
+  opacity: 1;
+}
+
+.alert-slide-enter-active {
+  transition: 0.3s cubic-bezier(0.42, 0, 0.58, 1.4);
+}
