@@ -1,18 +1,22 @@
 /*
  * @Date: 2022-10-28 10:24:42
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-11-28 15:12:37
+ * @LastEditTime: 2023-03-29 09:43:35
  * @FilePath: /viking-ui/packages/components/src/uploader/types.ts
  */
 import type { ExtractPropTypes, PropType } from 'vue'
 
 export interface FileItem {
+  id: string
   name: string
-  file: Blob
+  file?: Blob
+  url?: string
 }
 
 export interface UploadRes {
-  [key: string]: string
+  id: string
+  url: string
+  name: string
 }
 
 export interface UploadFunParams {

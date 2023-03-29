@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-10 16:57:28
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-12-29 11:14:00
+ * @LastEditTime: 2023-03-29 09:43:13
  * @FilePath: /viking-ui/packages/components/src/uploader/Uploader.vue
 -->
 <script lang="ts">
@@ -17,7 +17,7 @@ export default defineComponent({
   setup(props, ctx) {
     let progress: Progress
     const percent = ref(2)
-    const uploadRes = ref<UploadRes>({})
+    const uploadRes = ref<UploadRes[]>([])
     const timeNow = ref('')
 
     onMounted(() => {
@@ -46,18 +46,38 @@ export default defineComponent({
     }
 
     function upload(item: FileItem) {
-      const { name, file } = item
-      const suffix = file.type.split('/')[1]
-      uploadFile({
-        file,
-        name: `${timeNow.value}_${props.website}_${name}_${getRandomID()}.${suffix}`,
-        onSuccess: (val: string) => {
-          uploadRes.value[item.name] = val
-          progress.next()
-        },
-        onError: () => {
-          progress.next()
-        },
+      const { name, file, url } = item
+
+      // 如果是外网地址，忽略上传，直接返回结果
+      if (url) {
+        setUploadRes(item, url)
+        progress.next()
+        return
+      }
+
+      // 如果是blob
+      if (file) {
+        const suffix = file.type.split('/')[1]
+        uploadFile({
+          file,
+          name: `${timeNow.value}_${props.website}_${name}_${getRandomID()}.${suffix}`,
+          onSuccess: (url: string) => {
+            setUploadRes(item, url)
+            progress.next()
+          },
+          onError: () => {
+            progress.next()
+          },
+        })
+      }
+    }
+
+    // 设置上传结果
+    function setUploadRes(item: FileItem, url: string) {
+      uploadRes.value.push({
+        id: item.id,
+        name: item.name,
+        url,
       })
     }
 
