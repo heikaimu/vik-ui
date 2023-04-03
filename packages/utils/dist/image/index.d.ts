@@ -14,6 +14,7 @@ interface ImageResetParams {
     angle: number;
 }
 declare function getObjectUrl(file: Blob): string;
+export declare function getBlobByFileURL(fileURL: string): Promise<Blob>;
 declare function dataURLtoBlob(str: string): Blob | null;
 declare function base64toUrl(str: string): string | null;
 declare function blobToDataURL(blob: Blob): Promise<string>;

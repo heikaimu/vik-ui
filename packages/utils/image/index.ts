@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-05-07 16:48:42
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-11-07 13:19:56
+ * @LastEditTime: 2023-03-31 10:05:06
  */
 interface ImageResetRateParams {
   url: string
@@ -41,6 +41,24 @@ function getObjectUrl(file: Blob): string {
     url = window.webkitURL.createObjectURL(file)
 
   return url
+}
+
+/**
+ * 通过本地地址获取blob
+ * @param fileURL - 本地地址
+ * @returns
+ */
+export function getBlobByFileURL(fileURL: string): Promise<Blob> {
+  // 发送GET请求并获取响应的Blob对象
+  return new Promise((resolve) => {
+    fetch(fileURL)
+      .then((response) => {
+        return response.blob()
+      })
+      .then((blob) => {
+        resolve(blob)
+      })
+  })
 }
 
 /**

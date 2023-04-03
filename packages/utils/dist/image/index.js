@@ -8,6 +8,17 @@ function getObjectUrl(file) {
         url = window.webkitURL.createObjectURL(file);
     return url;
 }
+export function getBlobByFileURL(fileURL) {
+    return new Promise(function (resolve) {
+        fetch(fileURL)
+            .then(function (response) {
+            return response.blob();
+        })
+            .then(function (blob) {
+            resolve(blob);
+        });
+    });
+}
 function dataURLtoBlob(str) {
     var arr = str.split(',');
     var firstStr = arr[0];

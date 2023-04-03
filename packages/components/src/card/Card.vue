@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-10 16:34:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-22 16:19:25
+ * @LastEditTime: 2023-03-30 13:23:20
  * @FilePath: /viking-ui/packages/components/src/card/Card.vue
 -->
 <script lang="ts">
@@ -66,7 +66,7 @@ export default defineComponent({
         <img class="ratio-image__source" :style="{ objectFit: fit }" :src="src" alt="">
       </div>
     </div>
-    <div class="viking-card__info">
+    <div v-if="title" class="viking-card__info">
       <p v-if="title" class="viking-card__title" :class="{ 'viking-card__title--omits2': omits2 }">
         {{ title }}
       </p>

@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-11-25 10:28:44
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-28 13:47:35
+ * @LastEditTime: 2023-03-30 13:35:03
  * @FilePath: /viking-ui/packages/components/src/group-list/useVirtualGroupList.ts
  */
 import { computed, ref } from 'vue'
@@ -20,9 +20,10 @@ export function useVirtualGroupList(list: any[], listProps: PropsType) {
   function setBodyListAll() {
     listAll.value = list.reduce((prev, cur) => {
       const children: any[] = cur[childrenKey]
-      // 给每个卡片添加组标题
+      // 给每个卡片添加组标题，组id
       children.forEach((item) => {
         item.groupName = cur[titleKey]
+        item.groupId = cur.uuid
       })
       // 如果当前组是奇数，则添加当前组中间的元素，凑成偶数
       if (children.length % 2 === 1) {
