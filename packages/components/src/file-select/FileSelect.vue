@@ -20,6 +20,10 @@ export default defineComponent({
 
     // 打开filestack
     function handleOpenFilestack() {
+      if (!props.showFileStack) {
+        return;
+      }
+      
       const client = filestack.init('AvKLw5hsbQm2sVOtawSNgz')
       const options = {
         fromSources: ['googledrive', 'instagram', 'facebook'],
@@ -93,7 +97,7 @@ export default defineComponent({
         </label>
       </li>
     </ul>
-    <ul class="file-select__list">
+    <ul class="file-select__list" v-if="showFileStack">
       <li class="item">
         <label id="menu_third_way" class="file-select__card" @click="handleOpenFilestack">
           <div class="third-card-wrapper">

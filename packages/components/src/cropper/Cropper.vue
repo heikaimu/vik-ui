@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-18 16:00:35
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-04-03 09:52:51
+ * @LastEditTime: 2023-05-30 10:25:46
  * @FilePath: /viking-ui/packages/components/src/cropper/Cropper.vue
 -->
 <script lang="ts">
@@ -36,7 +36,7 @@ export default defineComponent({
         movable: false, // 移动图像
         scalable: false, // 缩放
         rotatable: false,
-        zoomable: false,
+        zoomable: true,
         zoomOnTouch: false,
         zoomOnWheel: false,
         toggleDragModeOnDblclick: false,

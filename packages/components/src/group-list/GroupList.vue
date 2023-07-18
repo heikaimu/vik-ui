@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-23 17:19:33
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-24 10:19:48
+ * @LastEditTime: 2023-06-14 14:13:30
  * @FilePath: /viking-ui/packages/components/src/group-list/GroupList.vue
 -->
 <script lang="ts">
@@ -36,6 +36,12 @@ export default defineComponent({
       setActiveGroup(start)
     }
 
+    // 修改组
+    function handleChangeGroup(id: string, title: string) {
+      ctx.emit('changeGroup', id, title)
+      changeGroup(id)
+    }
+
     return {
       vScroll,
       listAll,
@@ -46,6 +52,7 @@ export default defineComponent({
       changeGroup,
       setActiveGroup,
       handleScroll,
+      handleChangeGroup,
     }
   },
 })
@@ -54,7 +61,7 @@ export default defineComponent({
 <template>
   <div class="group-list">
     <div class="group-list__left" :style="leftStyle">
-      <Navigation :value="currentGroupId" :list="navigation" @change="changeGroup" />
+      <Navigation :value="currentGroupId" :list="navigation" @change="handleChangeGroup" />
     </div>
     <div class="group-list__right">
       <VirtualScroll

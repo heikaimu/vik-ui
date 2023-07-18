@@ -18,10 +18,16 @@
 }
 
 .anchor {
+  height: 100%;
 
   &__list {
+    height: 100%;
     padding: 0;
     margin: 0;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
   }
 
   &__item {
