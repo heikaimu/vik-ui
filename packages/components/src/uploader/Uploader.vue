@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-10 16:57:28
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-03-29 09:43:13
+ * @LastEditTime: 2023-08-14 10:50:58
  * @FilePath: /viking-ui/packages/components/src/uploader/Uploader.vue
 -->
 <script lang="ts">
@@ -52,6 +52,7 @@ export default defineComponent({
       if (url) {
         setUploadRes(item, url)
         progress.next()
+        ctx.emit('success', setUploadRes)
         return
       }
 
@@ -63,9 +64,11 @@ export default defineComponent({
           name: `${timeNow.value}_${props.website}_${name}_${getRandomID()}.${suffix}`,
           onSuccess: (url: string) => {
             setUploadRes(item, url)
+            ctx.emit('success', setUploadRes)
             progress.next()
           },
           onError: () => {
+            ctx.emit('error', item)
             progress.next()
           },
         })

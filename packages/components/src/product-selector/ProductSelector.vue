@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-11-10 16:34:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-03-06 13:20:39
+ * @LastEditTime: 2023-08-23 17:41:29
  * @FilePath: /viking-ui/packages/components/src/product-selector/ProductSelector.vue
 -->
 <script lang="ts">
@@ -48,11 +48,7 @@ export default defineComponent({
         const curProduct: Product = props.products.find(item => item.uuid === uuid) as Product
         if (curProduct) {
           return {
-            url: curProduct.url,
-            uuid: curProduct.uuid,
-            id: curProduct.id,
-            hasText: curProduct.hasText,
-            price: curProduct.price,
+            ...curProduct,
           }
         }
         return undefined

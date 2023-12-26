@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import { VikAlert, VikBox, VikButton, VikCard, VikCol, VikContainer, VikCropper, VikDivider, VikFileSelect, VikGroupList, VikHeader, VikIcon, VikPlusCard, VikProductSelector, VikRow, VikTab, VikTabPane, VikUploader } from '../packages/components/index'
+import { VikAlert, VikBox, VikButton, VikCard, VikCol, VikContainer, VikCropper, VikDivider, VikDrawer, VikFileSelect, VikGroupList, VikHeader, VikIcon, VikPlusCard, VikProductSelector, VikRow, VikTab, VikTabPane, VikUploader } from '../packages/components/index'
 import { getObjectUrl } from '../packages/utils'
 
 const cLoading = ref(true)
@@ -146,10 +146,43 @@ const vikAlert = ref(null)
 function alertError() {
   vikAlert.value.show()
 }
+
+const drawerVisible = ref(false)
+function openDrawer(flag: boolean) {
+  drawerVisible.value = flag
+}
 </script>
 
 <template>
   <main class="main-wrapper">
+    <section>
+      <VikDivider>抽屉</VikDivider>
+
+      <VikContainer :border="true" :shadow="true">
+        <template #main>
+          <VikDrawer v-model:visible="drawerVisible">
+            <p class="viking-drawer__text">
+              If you go back now, your edits will be discarded.
+            </p>
+            <button class="viking-drawer__button">
+              Choose photo
+            </button>
+            <button class="viking-drawer__button">
+              Take photo
+            </button>
+            <button class="viking-drawer__button viking-drawer__button--danger">
+              Discard
+            </button>
+          </VikDrawer>
+        </template>
+        <template #footer>
+          <VikButton type="dark" fill @click="openDrawer(true)">
+            Upload a photo
+          </VikButton>
+        </template>
+      </VikContainer>
+    </section>
+
     <section>
       <VikDivider>盒子</VikDivider>
       <VikBox :pd="10" :pl="40" :pr="30">
@@ -192,8 +225,7 @@ function alertError() {
         <template #main>
           <VikUploader
             v-if="uploadVisible" website="M" :data="uploadFiles"
-            gif-url="https://cdn.shopifycdn.net/s/files/1/0343/0275/4948/files/01.gif"
-            @complete="completeUpload"
+            gif-url="https://cdn.shopifycdn.net/s/files/1/0343/0275/4948/files/01.gif" @complete="completeUpload"
           />
         </template>
       </VikContainer>
@@ -211,8 +243,7 @@ function alertError() {
               children: 'images',
               label: 'name',
               id: 'id',
-            }" :pos="posY" :card-height="100"
-            @scroll="handleScroll"
+            }" :pos="posY" :card-height="100" @scroll="handleScroll"
           >
             <template #default="{ data }">
               <div class="test-card" style="height:100px">
@@ -244,6 +275,9 @@ function alertError() {
       </VikButton>
       <VikButton type="text">
         文字按钮
+      </VikButton>
+      <VikButton type="dark" icon="shangchuanzhaopian" fill>
+        Upload a photo
       </VikButton>
       <br>
       <br>
@@ -287,19 +321,16 @@ function alertError() {
       </VikButton>
       <br>
       <br>
-      <VikButton type="primary" round fill>
+      <VikButton type="primary" fill>
         默认按钮
       </VikButton>
-      <VikButton type="primary" round>
-        默认按钮
-      </VikButton>
-      <VikButton type="primary" size="medium" round>
+      <VikButton type="primary" size="large" fill>
         大按钮
       </VikButton>
-      <VikButton type="primary" size="small" round>
+      <VikButton type="primary" size="small" fill>
         小型按钮
       </VikButton>
-      <VikButton type="primary" size="mini" round>
+      <VikButton type="primary" size="mini" fill>
         超小按钮
       </VikButton>
       <br>
@@ -321,7 +352,7 @@ function alertError() {
 
     <section>
       <VikDivider>头部</VikDivider>
-      <VikHeader title="Arrow Photo" icon-name="arrow-left-bold" @close="handleClose" />
+      <VikHeader title="Custom Process" icon-name="arrow-left-bold" @close="handleClose" />
       <br>
       <VikHeader title="Close Photo" icon-name="close-bold" @close="handleClose" />
     </section>
@@ -345,7 +376,10 @@ function alertError() {
           <VikPlusCard />
         </VikCol>
         <VikCol :span="4">
-          <VikCard shadow src="https://images7.alphacoders.com/126/1265780.jpg" :omits2="true" title="111House of the DragonHouse of the DragonHouse of the Dragon" sub="" />
+          <VikCard
+            shadow src="https://images7.alphacoders.com/126/1265780.jpg" :omits2="true"
+            title="111House of the DragonHouse of the DragonHouse of the Dragon" sub=""
+          />
         </VikCol>
         <VikCol :span="4">
           <VikCard src="https://images7.alphacoders.com/126/1265780.jpg" title="House of the Dragon" sub="" />
@@ -359,17 +393,13 @@ function alertError() {
         <VikCol :span="6">
           <VikCard
             :ratio="1" shadow src="https://images7.alphacoders.com/126/1265780.jpg" title="House of the Dragon"
-            sub=""
-            closable
-            @click="handleClickCard"
-            @close="handleCloseCard"
+            sub="" closable @click="handleClickCard" @close="handleCloseCard"
           />
         </VikCol>
         <VikCol :span="6">
           <VikCard
-            :border="true" :ratio="1" active fit="contain" radius="50%" shadow src="https://images7.alphacoders.com/126/1265780.jpg"
-            sub=""
-            @click="handleClickCard"
+            :border="true" :ratio="1" active fit="contain" radius="50%" shadow
+            src="https://images7.alphacoders.com/126/1265780.jpg" sub="" @click="handleClickCard"
             @close="handleCloseCard"
           />
         </VikCol>
@@ -401,7 +431,7 @@ function alertError() {
           <VikHeader title="Close Photo" sub="只要2.99元，欢乐带回家" icon-name="close-bold" @close="handleClose" />
         </template>
         <template #main>
-          <VikFileSelect @select="handleSelect" />
+          <VikFileSelect :show-file-stack="true" @select="handleSelect" />
         </template>
         <template #footer>
           <VikRow :gutter="20">

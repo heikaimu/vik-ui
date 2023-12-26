@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-07-23 15:40:12
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-11-28 14:45:06
+ * @LastEditTime: 2023-08-01 16:38:07
  */
 import axios from 'axios'
 import type { UploadFunParams } from './types'

@@ -24,4 +24,5 @@ export { default as VikProductSelector } from './product-selector'
 export { default as VikBox } from './box'
 export { default as VikAlert } from './alert'
 export { default as VikTransition } from './transition'
+export { default as VikDrawer } from './drawer'
 

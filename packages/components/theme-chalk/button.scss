@@ -1,13 +1,17 @@
+/* 导入变量和混合器 */
 @import "./variables";
 @import "./mixins";
 
+/* 按钮样式 */
 .vik-button {
   display: inline-block;
-  line-height: 1;
+  height: 48px;
+  line-height: 48px;
   white-space: nowrap;
   cursor: pointer;
   background: $color-white;
-  border: 1px solid $color-border-4;
+  // border: 1px solid $color-border-4;
+  border: none;
   color: $color-main;
   text-align: center;
   box-sizing: border-box;
@@ -15,13 +19,14 @@
   margin: 0;
   transition: 0.1s;
   font-weight: 500;
-  padding: 12px 20px;
+  padding: 0 20px;
   font-size: $font-base;
-  border-radius: 4px;
+  border-radius: 8px;
   position: relative;
 
+  /* 鼠标悬停状态 */
   &:hover {
-    transform: translate3d(0, -3px, 0);
+    // transform: translate3d(0, -3px, 0);
     box-shadow: 0 10px 20px rgba($color-black, .2);
 
     &::after {
@@ -30,11 +35,13 @@
     }
   }
 
+  /* 按钮按下状态 */
   &:active {
     transform: translate3d(0, -1px, 0);
-    box-shadow: 0 5px 10px r0px($color-black, .2);
+    box-shadow: 0 5px 10px rgba($color-black, .2);
   }
 
+  /* 伪类样式 */
   &::after {
     content: "";
     display: inline-block;
@@ -48,7 +55,7 @@
     transition: all .4s;
   }
 
-  // 颜色
+  /* 按钮颜色变体 */
   &--primary {
     background-color: $color-primary;
     color: $color-white;
@@ -87,43 +94,40 @@
 
   &--info {
     background-color: $color-info;
-    color: $color-normal;
+    color: $color-white;
 
     &::after {
       background-color: $color-info;
     }
   }
 
-  // 圆角
+  &--dark {
+    background-color: $color-main;
+    color: $color-white;
+  }
+
+  /* 圆角样式变体 */
   &.is-round {
     border-radius: 100px;
 
     &::after {
-      content: "";
-      display: inline-block;
-      width: 100%;
-      height: 100%;
       border-radius: 100px;
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: -1;
-      transition: all .4s;
     }
   }
 
-  // 禁用
+  /* 禁用按钮样式 */
   &.is-disabled {
     filter: contrast(0.5) brightness(1.4);
-    border: 1px solid #ffffff;
+    // border: 1px solid $color-white;
     cursor: not-allowed;
   }
 
+  /* 禁用状态下的鼠标悬停 */
   &.is-disabled:hover {
     &:hover {
       transform: translate3d(0, 0, 0);
       box-shadow: none;
-  
+
       &::after {
         transform: scale3d(0, 0, 0);
         opacity: 0;
@@ -131,36 +135,32 @@
     }
   }
 
-  // 尺寸
+  /* 按钮尺寸变体 */
   &--mini {
-    padding: 7px 15px;
-    font-size: $font-ex-small;
-    border-radius: 3px;
-  }
-
-  &--small {
-    padding: 9px 15px;
-    font-size: $font-ex-small;
-    border-radius: 3px;
-  }
-
-  &--medium {
-    padding: 10px 20px;
-    font-size: $font-base;
+    height: 30px;
+    line-height: 28px;
+    font-size: $font-mini;
     border-radius: 4px;
   }
 
-  &--large {
-    padding: 15px 25px;
-    font-size: $font-large;
+  &--small {
+    height: 40px;
+    line-height: 38px;
+    font-size: $font-small;
     border-radius: 6px;
   }
 
+  &--large {
+    height: 60px;
+    line-height: 58px;
+    font-size: $font-large;
+  }
+
+  /* 宽度变体 */
   &.is-fill,
   &--small.is-fill,
   &--small.is-base,
   &--small.is-large {
     width: 100%;
   }
-
 }

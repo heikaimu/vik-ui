@@ -2,7 +2,7 @@ import type { PropType } from 'vue'
 /*
  * @Date: 2022-10-28 10:24:42
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-03-06 13:21:06
+ * @LastEditTime: 2023-08-23 17:40:14
  * @FilePath: /viking-ui/packages/components/src/product-selector/types.ts
  */
 import type { ExtractPropTypes } from 'vue'
@@ -13,6 +13,7 @@ export interface Product {
   url: string
   id: string
   hasText: boolean
+  noPreview: boolean
   price: number
 }
 
