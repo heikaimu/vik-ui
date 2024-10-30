@@ -13,7 +13,7 @@ export const containerProps = {
   },
   height: {
     type: Number,
-    default: 700,
+    default: 750,
   },
   backgroundColor: {
     type: String,

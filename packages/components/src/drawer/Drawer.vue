@@ -5,7 +5,7 @@
  * @FilePath: /viking-ui/packages/components/src/divider/Divider.vue
 -->
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 import { drawerProps } from './types'
 export default defineComponent({
   name: 'VikDrawer',
@@ -13,9 +13,32 @@ export default defineComponent({
   setup(props, ctx) {
     function handleClose() {
       ctx.emit('update:visible', false)
+      ctx.emit('close')
     }
 
+    const drawerVisible = ref(false)
+    let timer: any
+
+    watch(() => props.visible, (val) => {
+      if (timer) {
+        clearTimeout(timer)
+        timer = null
+      }
+
+      if (val) {
+        drawerVisible.value = val
+      }
+      else {
+        timer = setTimeout(() => {
+          drawerVisible.value = val
+        }, 300)
+      }
+    }, {
+      immediate: true,
+    })
+
     return {
+      drawerVisible,
       handleClose,
     }
   },
@@ -23,17 +46,21 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="viking-drawer">
-    <div v-if="visible" class="viking-drawer__blank" />
-    <div v-if="visible" class="viking-drawer__content">
-      <div class="viking-drawer__content-item">
-        <slot />
+  <div class="viking-drawer" :class="{ 'viking-drawer--full': drawerVisible }">
+    <Transition name="drawer-fade">
+      <div v-if="visible" class="viking-drawer__blank" />
+    </Transition>
+    <Transition name="drawer-slide-down">
+      <div v-if="visible" class="viking-drawer__content">
+        <div class="viking-drawer__content-item">
+          <slot />
+        </div>
+        <div class="viking-drawer__content-item">
+          <button class="viking-drawer__button viking-drawer__button--bold" @click="handleClose">
+            {{ cancelText }}
+          </button>
+        </div>
       </div>
-      <div class="viking-drawer__content-item">
-        <button class="viking-drawer__button viking-drawer__button--bold" @click="handleClose">
-          Cancel
-        </button>
-      </div>
-    </div>
+    </Transition>
   </div>
 </template>

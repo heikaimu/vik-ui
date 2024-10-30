@@ -21,10 +21,10 @@ export default defineComponent({
 
     const containerStyle = computed(() => {
       return {
-        width: `${props.width}px`,
-        height: `${props.height}px`,
+        // width: `${props.width}px`,
+        // height: `${props.height}px`,
         backgroundColor: props.backgroundColor,
-        borderRadius: `${props.borderRadius}px`,
+        // borderRadius: `${props.borderRadius}px`,
       }
     })
 
@@ -37,7 +37,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="viking-container" :class="containerClass">
+  <div class="viking-container" :class="containerClass" :style="containerStyle">
     <div class="viking-container__header">
       <slot name="header" />
     </div>

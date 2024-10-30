@@ -82,7 +82,6 @@ export default defineComponent({
               <p class="card-wrapper__bottom--price">
                 {{ symbol }} {{ item.price }}
               </p>
-              <Icon class="float-svg" name="tubiaozhizuomoban-1" />
             </div>
           </Card>
           <div class="card-wrapper__float" :class="{ active: isActive(item) }">

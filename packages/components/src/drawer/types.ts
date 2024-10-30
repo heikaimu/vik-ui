@@ -11,6 +11,10 @@ export const drawerProps = {
     type: Boolean,
     default: false,
   },
+  cancelText: {
+    type: String,
+    default: 'Cancel',
+  },
 }
 
 export type DrawerProps = ExtractPropTypes<typeof drawerProps>

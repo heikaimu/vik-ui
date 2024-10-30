@@ -44,7 +44,7 @@ function confirmCrop(data: string) {
 const list = ref([])
 onMounted(() => {
   fetch('./mock/data.json').then(res => res.json()).then((res) => {
-    list.value = res.background
+    list.value = res.background.slice(1, 2)
   })
 })
 
@@ -243,10 +243,10 @@ function openDrawer(flag: boolean) {
               children: 'images',
               label: 'name',
               id: 'id',
-            }" :pos="posY" :card-height="100" @scroll="handleScroll"
+            }" pos-key="id" pos-value="2n2u2mf1738000" :card-height="200" @scroll="handleScroll"
           >
             <template #default="{ data }">
-              <div class="test-card" style="height:100px">
+              <div class="test-card" style="height:200px" :_id="data.id">
                 <img :src="data.cover" alt="">
               </div>
             </template>

@@ -34,6 +34,20 @@ export default defineComponent({
       }
     })
 
+    // 图标尺寸
+    const iconSizeMap: Record<string, number> = {
+      large: 18,
+      small: 14,
+      mini: 12,
+    }
+    const iconSize = computed(() => {
+      const sizeStr = props.size as string
+      const sizeValue = iconSizeMap[sizeStr]
+      return {
+        fontSize: `${(sizeValue || 16) * 1.6}px`,
+      }
+    })
+
     const handleClick = () => {
       if (props.disabled)
         return
@@ -44,6 +58,7 @@ export default defineComponent({
     return {
       styleClass,
       iconFont,
+      iconSize,
       handleClick,
     }
   },
@@ -52,8 +67,8 @@ export default defineComponent({
 
 <template>
   <button class="vik-button" :class="styleClass" :disabled="disabled">
-    <Icon v-if="iconFont.iconName && iconFont.position !== 'right'" class="icon" :name="iconFont.iconName" />
-    <slot />
-    <Icon v-if="iconFont.position === 'right' && iconFont.iconName" class="icon" :name="iconFont.iconName" />
+    <Icon v-if="iconFont.iconName && iconFont.position !== 'right'" :name="iconFont.iconName" class="vik-button__icon" :style="iconSize" />
+    <span class="vik-button__text"><slot /></span>
+    <Icon v-if="iconFont.position === 'right' && iconFont.iconName" :name="iconFont.iconName" class="vik-button__icon" :style="iconSize" />
   </button>
 </template>
